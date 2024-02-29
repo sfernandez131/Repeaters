@@ -12,18 +12,29 @@
     <Company>Outpost 13, LLC</Company>
     <PackageIcon>radio.jpg</PackageIcon>
     <RepositoryUrl>https://github.com/sfernandez131/Repeaters</RepositoryUrl>
+    <ApplicationIcon>radio.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\OneDrive\Pictures\radio.jpg">
+    <Content Include="radio.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\OneDrive\Pictures\radio.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="Selenium.WebDriver" Version="4.18.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Program.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>
