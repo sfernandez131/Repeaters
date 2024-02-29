@@ -16,14 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="radio.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\..\OneDrive\Pictures\radio.jpg">
+    <None Include="..\..\..\OneDrive\Pictures\radio.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-    </EmbeddedResource>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
