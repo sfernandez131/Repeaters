@@ -6,14 +6,14 @@ async Task ConvertTableToCSV(string url)
 {
     // Setup WebDriver (make sure to have chromedriver.exe in your project or in your PATH)
     var options = new ChromeOptions();
-    options.AddArguments("headless"); // Optional: Run Chrome in headless mode
+    options.AddArguments(["headless", "--log-level=3"]); // Optional: Run Chrome in headless mode
     using var driver = new ChromeDriver(options);
 
     // Navigate to the page
     driver.Navigate().GoToUrl(url);
 
-    // Wait for the content to load if necessary, can be replaced with more sophisticated waits
-    await Task.Delay(5000); // Example: Wait for 5 seconds
+    // Wait for page to load
+    while (driver?.PageSource is null) { await Task.Delay(500); }
 
     // Get the page source
     var html = driver.PageSource;
@@ -47,4 +47,14 @@ async Task ConvertTableToCSV(string url)
     await File.WriteAllTextAsync(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Repeaters.csv", csvBuilder.ToString());
 }
 
-await ConvertTableToCSV("https://www.repeaterbook.com/repeaters/Display_SS.php?state_id=26&loc=%&call=%&use=%");
+try
+{
+    await ConvertTableToCSV("https://www.repeaterbook.com/repeaters/Display_SS.php?state_id=26&loc=%&call=%&use=%");
+    Console.WriteLine("\n=================================\nDocument written to desktop.\nPress any key to exit.");
+}
+catch (Exception e)
+{
+    Console.WriteLine($"\n=================================\nAn error occured: {e.Message}.\nPress any key to exit.");
+}
+
+Console.ReadKey(false);

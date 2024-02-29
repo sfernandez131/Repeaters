@@ -11,6 +11,7 @@
     <Title>Repeaters</Title>
     <Company>Outpost 13, LLC</Company>
     <PackageIcon>radio.jpg</PackageIcon>
+    <RepositoryUrl>https://github.com/sfernandez131/Repeaters</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
